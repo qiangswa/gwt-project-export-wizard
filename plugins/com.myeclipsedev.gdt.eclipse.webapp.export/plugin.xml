@@ -11,7 +11,7 @@
     <wizard
             name="%wizard.name"
             icon="icons/full/ctool16/exportwar_wiz.gif"
-            class="com.myeclipsedev.ui.internal.wizard.WebComponentExportWizard"
+            class="com.myeclipsedev.gdt.eclipse.ui.internal.wizard.WebComponentExportWizard"
             category="com.myeclipsedev.export.ui"
             id="com.myeclipsedev.ui.internal.wizard.WebComponentExportWizard">
          <description>
@@ -22,5 +22,43 @@
          </selection>
       </wizard>
     </extension>
+  <extension
+        point="org.eclipse.ui.popupMenus">
+              <objectContribution
+            adaptable="true"
+            id="com.myeclipsedev.gdt.eclipse.ui.popupMenus.project.GWTExport"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="com.myeclipsedev.gdt.eclipse.ui.internal.actions.GWTWebExportAction"
+               icon="icons/deploy_16x16.png"
+               id="com.myeclipsedev.gdt.eclipse.ui.actions.GWTExport"
+               label="GWT Web App export..."
+               menubarPath="com.google.gdt.eclipse.suite.popupMenu.project/additional">
+         </action>
+      </objectContribution>
+        
+  </extension>
+      <extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             allPopups="false"
+             locationURI="menu:com.google.gdt.eclipse.suite.GDTPulldown?after=toolbarGroup.compile">
+          <command
+                commandId="com.myeclipsedev.gdt.eclipse.command.webapp.export"
+                icon="icons/deploy_16x16.png"
+                label="GWT Web App export..."
+                style="push"
+                tooltip="GWT Compile Project">
+          </command>
+       </menuContribution>
+  </extension>
+      <extension
+            point="org.eclipse.ui.commands">
+         <command
+               defaultHandler="com.myeclipsedev.gdt.eclipse.command.webapp.ExportHandler"
+               id="com.myeclipsedev.gdt.eclipse.command.webapp.export"
+               name="GWT export command">
+         </command>
+      </extension>
 
 </plugin>

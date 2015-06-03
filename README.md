@@ -1,8 +1,4 @@
 # gwt-project-export-wizard
-Introduction
-
-This is a simple page of how to install the plugin
-Details
 
 Download and install the plugins for GWT.
 
